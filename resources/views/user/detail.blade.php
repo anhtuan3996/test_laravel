@@ -1,1 +1,0 @@
-detail.blade.php

@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::prefix('users')->group(function () {
+        Route::get('/', 'UserController@index')->name('users');
+    });
+    Route::prefix('nations')->group(function () {
+        Route::get('/', 'NationController@index')->name('nations');
+    });
+});

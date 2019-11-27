@@ -6,6 +6,8 @@ use App\Model\District;
 use App\Model\Nation;
 
 class NationRepository {
+    const PAGINATION_DEFAULT = 15;
+
     public function nationInfo($code)
     {
         return Nation::with(['cities'])->where('code', $code)->first();
@@ -24,5 +26,10 @@ class NationRepository {
     public function communeInfo($code)
     {
         return District::where('code', $code)->first();
+    }
+
+    public function pagination()
+    {
+        return Nation::paginate(self::PAGINATION_DEFAULT);
     }
 }

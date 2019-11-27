@@ -10,7 +10,7 @@
                 Name
             </th>
             <th>
-                Email
+                Code
             </th>
             <th>
                 Created
@@ -18,14 +18,14 @@
         </tr>
         </thead>
         <tbody>
-        @forelse($users as $user)
+        @forelse($nations as $nation)
             <tr>
                 <td>
-                    {{ $user->id }}
+                    {{ $nation->id }}
                 </td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->created_at}}</td>
+                <td>{{$nation->name}}</td>
+                <td>{{$nation->code}}</td>
+                <td>{{$nation->created_at}}</td>
             </tr>
         @empty
             <tr>
@@ -34,6 +34,6 @@
         @endforelse
         </tbody>
     </table>
-    {{ $users->appends(request()->query())->links() }}
+    {{ $nations->appends(request()->query())->links() }}
 
 @endsection
