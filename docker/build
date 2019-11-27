@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker build -t dutch/app:latest ./app
+docker build -t dutch/postgres:latest ./postgres

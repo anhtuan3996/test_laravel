@@ -1,0 +1,30 @@
+version: '2.1'
+services:
+  app:
+    build:
+      context: ./docker/app
+    image: dutch/app:latest
+    ports:
+      - 8999:80
+      - 443:443
+    volumes:
+      - .:/var/www/html:cached
+    networks:
+      - dutch_net
+  postgres:
+    build:
+      context: ./docker/postgres
+    image: dutch/postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: test_laravel
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgres
+    networks:
+      - dutch_net
+networks:
+  dutch_net:
+    driver: bridge
