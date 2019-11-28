@@ -1,4 +1,4 @@
-## SETUP DOCKER
+## RUN DOCKER
 
 ``docker-composer up -d``
 ## COPY FILE .env AND config
@@ -15,4 +15,7 @@
 
 ``php artisan db:seed``
 
-#THANK YOU SO MUCH
+## Account info
+``admin@testlaravel.com / password``
+
+##THANK YOU SO MUCH

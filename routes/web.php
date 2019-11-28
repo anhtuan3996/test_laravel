@@ -25,6 +25,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', 'UserController@index')->name('users');
     });
     Route::prefix('nations')->group(function () {
-        Route::get('/', 'NationController@index')->name('nations');
+        Route::get('', 'NationController@index')->name('nations');
+        Route::get('create', 'NationController@create')->name('nations.create');
+        Route::post('create', 'NationController@store')->name('nations.store');
+        Route::get('{nation}', 'NationController@detail')->name('nations.detail');
     });
 });

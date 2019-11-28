@@ -48,11 +48,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if (config('app.debug')) {
-            return parent::render($request, $exception);
+        if (config('app.debug') && stristr($request->route()->getPrefix(), 'api')) {
+            return $this->handle($request, $exception);
         }
-
-        return $this->handle($request, $exception);
+        return parent::render($request, $exception);
     }
     /**
      * Convert the Exception into a JSON HTTP Response

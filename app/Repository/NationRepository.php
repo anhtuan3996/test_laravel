@@ -30,6 +30,16 @@ class NationRepository {
 
     public function pagination()
     {
-        return Nation::paginate(self::PAGINATION_DEFAULT);
+        return Nation::orderBy('id', 'DESC')->paginate(self::PAGINATION_DEFAULT);
+    }
+
+    public function citiesInNation(Nation $nation)
+    {
+        return City::where('nation_id', $nation->id)->paginate(self::PAGINATION_DEFAULT);
+    }
+
+    public function create($params)
+    {
+        return Nation::create($params);
     }
 }
