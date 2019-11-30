@@ -32,6 +32,15 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', 'NationController@city')->name('nations.detail');
             Route::get('create', 'CityController@create')->name('city.create');
             Route::post('create', 'CityController@store')->name('city.store');
+            Route::get('/{city}/districts', 'CityController@districts')->name('city.districts');
+        });
+    });
+
+    Route::prefix('{city}')->group(function () {
+        Route::prefix('districts')->group(function () {
+            Route::get('', 'CityController@districts')->name('city.districts');
+            Route::get('create', 'DistrictController@create')->name('district.create');
+            Route::post('create', 'DistrictController@store')->name('district.store');
         });
     });
 

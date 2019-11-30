@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCityRequest;
 use App\Http\Requests\CreateNationRequest;
+use App\Model\City;
 use App\Model\Nation;
 use App\Repository\NationRepository;
 
@@ -26,5 +27,11 @@ class CityController extends Controller
         $params['nation_id'] = $nation->id;
         $this->nationRepository->createCity($params);
         return redirect(route('nations.detail', $nation->id))->with('alert-success', 'Successfully');
+    }
+
+    public function districts(City $city)
+    {
+        $districts = $this->nationRepository->districtOfCity($city);
+        return view('city.districts', ['districts' => $districts, 'city' => $city]);
     }
 }

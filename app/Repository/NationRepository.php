@@ -38,6 +38,11 @@ class NationRepository {
         return City::where('nation_id', $nation->id)->paginate(self::PAGINATION_DEFAULT);
     }
 
+    public function districtOfCity(City $city)
+    {
+        return District::where('city_id', $city->id)->paginate(self::PAGINATION_DEFAULT);
+    }
+
     public function create($params)
     {
         return Nation::create($params);
@@ -46,5 +51,10 @@ class NationRepository {
     public function createCity($params)
     {
         return City::create($params);
+    }
+
+    public function createDistrict($params)
+    {
+        return District::create($params);
     }
 }

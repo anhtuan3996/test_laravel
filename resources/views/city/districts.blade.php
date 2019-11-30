@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-    <h1 class="text-center">{{ $nation->name }} | {{ $nation->code }}</h1>
-    <h3>Cities</h3>
+    <h1 class="text-center">{{ $city->name }} | {{ $city->code }}</h1>
+    <h3>Districts</h3>
     <div class="row">
         <p>
-            <a href="{{route('city.create', $nation->id)}}" class="btn btn-primary pull-right">Add city</a>
+            <a href="{{route('district.create', $city->id)}}" class="btn btn-primary pull-right">Add district</a>
         </p>
     </div>
     <div class="row">
@@ -24,28 +24,28 @@
                     Created
                 </th>
                 <th></th>
-    {{--            <th>Detail</th>--}}
+                {{--            <th>Detail</th>--}}
             </tr>
             </thead>
             <tbody>
-            @forelse($cities as $city)
+            @forelse($districts as $district)
                 <tr>
                     <td>
-                        {{ $city->id }}
+                        {{ $district->id }}
                     </td>
-                    <td>{{$city->name}}</td>
-                    <td>{{$city->code}}</td>
-                    <td>{{$city->created_at}}</td>
-                    <td><a href="{{ route('city.districts', ['city' => $city->id]) }}" class="btn btn-info">Detail</a></td>
+                    <td>{{$district->name}}</td>
+                    <td>{{$district->code}}</td>
+                    <td>{{$district->created_at}}</td>
+{{--                    <td><a href="{{ route('city.districts', ['city' => $city->id]) }}" class="btn btn-info">Detail</a></td>--}}
                 </tr>
             @empty
                 <tr>
-                    <td colspan="4"><h3 class="text-center">NO DATA</h3></td>
+                    <td colspan="12"><h3 class="text-center">NO DATA</h3></td>
                 </tr>
             @endforelse
             </tbody>
         </table>
-        {{ $cities->appends(request()->query())->links() }}
+        {{ $districts->appends(request()->query())->links() }}
     </div>
 
 @endsection
