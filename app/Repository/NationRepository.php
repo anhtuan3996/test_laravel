@@ -2,6 +2,7 @@
 namespace App\Repository;
 
 use App\Model\City;
+use App\Model\Commune;
 use App\Model\District;
 use App\Model\Nation;
 
@@ -43,6 +44,11 @@ class NationRepository {
         return District::where('city_id', $city->id)->paginate(self::PAGINATION_DEFAULT);
     }
 
+    public function communesOfDistrict(District $district)
+    {
+        return Commune::where('district_id', $district->id)->paginate(self::PAGINATION_DEFAULT);
+    }
+
     public function create($params)
     {
         return Nation::create($params);
@@ -51,6 +57,11 @@ class NationRepository {
     public function createCity($params)
     {
         return City::create($params);
+    }
+
+    public function createCommune($params)
+    {
+        return Commune::create($params);
     }
 
     public function createDistrict($params)

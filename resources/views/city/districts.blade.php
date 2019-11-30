@@ -36,7 +36,7 @@
                     <td>{{$district->name}}</td>
                     <td>{{$district->code}}</td>
                     <td>{{$district->created_at}}</td>
-{{--                    <td><a href="{{ route('city.districts', ['city' => $city->id]) }}" class="btn btn-info">Detail</a></td>--}}
+                    <td><a href="{{ route('district.communes', ['district' => $district->id]) }}" class="btn btn-info">Detail</a></td>
                 </tr>
             @empty
                 <tr>

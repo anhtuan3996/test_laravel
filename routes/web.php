@@ -44,4 +44,11 @@ Route::middleware(['auth'])->group(function () {
         });
     });
 
+    Route::get('{district}/communes', 'DistrictController@communes')->name('district.communes');
+
+    Route::prefix('{district}')->group(function () {
+        Route::get('create', 'CommuneController@create')->name('commune.create');
+        Route::post('create', 'CommuneController@store')->name('commune.store');
+    });
+
 });
