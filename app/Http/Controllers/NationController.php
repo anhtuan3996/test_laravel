@@ -21,11 +21,11 @@ class NationController extends Controller
         return view('nation.list', ['nations' => $nations]);
     }
 
-    public function detail(Nation $nation)
+    public function city(Nation $nation)
     {
         $cities = $this->nationRepository->citiesInNation($nation);
 
-        return view('nation.detail', ['nation' => $nation, 'cities' => $cities]);
+        return view('nation.city', ['nation' => $nation, 'cities' => $cities]);
     }
 
     public function create()

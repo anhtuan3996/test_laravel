@@ -42,4 +42,9 @@ class NationRepository {
     {
         return Nation::create($params);
     }
+
+    public function createCity($params)
+    {
+        return City::create($params);
+    }
 }

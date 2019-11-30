@@ -28,6 +28,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('', 'NationController@index')->name('nations');
         Route::get('create', 'NationController@create')->name('nations.create');
         Route::post('create', 'NationController@store')->name('nations.store');
-        Route::get('{nation}', 'NationController@detail')->name('nations.detail');
+        Route::prefix('{nation}/cities')->group(function () {
+            Route::get('', 'NationController@city')->name('nations.detail');
+            Route::get('create', 'CityController@create')->name('city.create');
+            Route::post('create', 'CityController@store')->name('city.store');
+        });
     });
+
 });
